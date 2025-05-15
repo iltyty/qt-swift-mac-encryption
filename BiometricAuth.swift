@@ -53,7 +53,7 @@ func getOrCreateAESKey() -> SymmetricKey {
 }
 
 @objc public class BiometricAuth: NSObject {
-    @objc public static func authenticateAndEncrypt(_ input: String, completion: @escaping (String?) -> Void) {
+    @objc public static func authenticateAndEncrypt(_ input: String, completion: @escaping @Sendable (String?) -> Void) {
         let context = LAContext()
         var error: NSError?
 
@@ -76,7 +76,7 @@ func getOrCreateAESKey() -> SymmetricKey {
         }
     }
 
-    @objc public static func authenticateAndDecrypt(_ base64: String, completion: @escaping (String?) -> Void) {
+    @objc public static func authenticateAndDecrypt(_ base64: String, completion: @escaping @Sendable (String?) -> Void) {
         let context = LAContext()
         var error: NSError?
 
